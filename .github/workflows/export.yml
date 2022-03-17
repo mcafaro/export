@@ -33,3 +33,5 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: path = export("sample.mlx", Format="html")
+        env:
+          MW_CONNECTOR_CONNECTION_PROFILES: loopbackHttps
