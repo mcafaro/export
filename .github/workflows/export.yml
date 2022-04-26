@@ -1,17 +1,8 @@
 name: MATLAB Build
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
-  workflow_dispatch:
-
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       
@@ -24,15 +15,14 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         
-      - name: Run MATLAB
+      - name: Run MATLAB Command
         uses: matlab-actions/run-command@v1
         with:
           command: |
             connector.internal.startConnectionProfile("loopbackHttps");
             com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn();
-            export("sample.mlx", Format="html");
+            export("sample.mlx");
         
       - uses: actions/upload-artifact@v3
         with:
-          name: sample-html
-          path: sample.html
+          path: sample.pdf
