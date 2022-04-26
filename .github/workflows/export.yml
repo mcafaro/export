@@ -32,6 +32,4 @@ jobs:
       - name: Run all tests
         uses: matlab-actions/run-command@v1
         with:
-          command: path = export("sample.mlx", Format="html")
-        env:
-          MW_CONNECTOR_CONNECTION_PROFILES: loopbackHttps
+          command: connector.internal.startConnectionProfile("loopbackHttps"); path = export("sample.mlx", Format="html")
