@@ -19,7 +19,7 @@ jobs:
         run: |
           sudo apt-get install xvfb
           Xvfb :99 &
-          echo "export DISPLAY=:99" >> $GITHUB_ENV
+          echo "DISPLAY=:99" >> $GITHUB_ENV
         
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
