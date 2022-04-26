@@ -22,6 +22,8 @@ jobs:
             connector.internal.startConnectionProfile("loopbackHttps");
             com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn();
             export("sample.mlx");
+            addpath(fullfile(matlabroot,'examples','matlab','main'));
+            runtests
         
       - uses: actions/upload-artifact@v3
         with:
