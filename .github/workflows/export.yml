@@ -33,4 +33,4 @@ jobs:
 
       # As an alternative to run-tests, you can use run-command to execute a MATLAB script, function, or statement.
       - name: Run MATLAB
-        run: xvfb-run -a matlab -batch 'connector.internal.startConnectionProfile("loopbackHttps"); path = export("sample.mlx", Format="html")'
+        run: xvfb-run -a matlab -batch 'connector.internal.startConnectionProfile("loopbackHttps"); com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn(); path = export("sample.mlx", Format="html")'
