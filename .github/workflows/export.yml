@@ -22,7 +22,7 @@ jobs:
         uses: matlab-actions/setup-matlab@v1
         
       - name: Run MATLAB
-        run: xvfb-run -a matlab -batch 'com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn(); path = export("sample.mlx", Format="html")'
+        run: xvfb-run -a matlab -batch 'com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn(); connector.internal.startConnectionProfile("loopbackHttps"); export("sample.mlx", Format="html");'
         
       - uses: actions/upload-artifact@v3
         with:
