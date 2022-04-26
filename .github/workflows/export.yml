@@ -18,7 +18,7 @@ jobs:
       - name: Start display server
         run: |
           sudo apt-get install xvfb
-          xvfb :99 &
+          Xvfb :99 &
           echo "export DISPLAY=:99" >> $GITHUB_ENV
         
       - name: Setup MATLAB
