@@ -15,15 +15,15 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         
-      - name: Run MATLAB command
-        uses: matlab-actions/run-command@v1
-        with:
-          command: |
-            connector.internal.startConnectionProfile("loopbackHttps");
-            com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn();
-            export("sample.mlx");
-            addpath(fullfile(matlabroot,'examples','matlab','main'));
-            runtests
+#       - name: Run MATLAB command
+#         uses: matlab-actions/run-command@v1
+#         with:
+#           command: |
+#             connector.internal.startConnectionProfile("loopbackHttps");
+#             com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn();
+#             export("sample.mlx");
+            
+      - run: matlab -display :99 -batch "addpath(fullfile(matlabroot,'examples','matlab','main')); runtests"
         
       - uses: actions/upload-artifact@v3
         with:
