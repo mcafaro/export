@@ -13,16 +13,13 @@ jobs:
           echo "DISPLAY=:99" >> $GITHUB_ENV
         
       - name: Setup MATLAB
-        uses: matlab-actions/setup-matlab@v1
+        uses: matlab-actions/setup-matlab@v2
         
       - name: Run MATLAB command
-        uses: matlab-actions/run-command@v1
+        uses: matlab-actions/run-command@v2
         with:
-          command: |
-            connector.internal.startConnectionProfile("loopbackHttps");
-            com.mathworks.matlabserver.connector.api.Connector.ensureServiceOn();
-            export("sample.mlx");
-        
+          command: export("sample.mlx");
+          
       - uses: actions/upload-artifact@v3
         with:
           path: sample.pdf
