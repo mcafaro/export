@@ -4,9 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       
-      - name: Start display server
+      - name: Start virtual display
         run: |
           sudo apt-get install xvfb
           Xvfb :99 &
@@ -20,6 +20,6 @@ jobs:
         with:
           command: export("sample.mlx");
           
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: sample.pdf
